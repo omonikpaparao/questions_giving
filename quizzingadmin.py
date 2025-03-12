@@ -5,14 +5,14 @@ import base64
 from io import BytesIO
 
 # GitHub repo details
-GITHUB_REPO = st.secrets["github"]["username"]
+GITHUB_REPO = st.secrets["github"]["username"]+"/sai"
 GITHUB_FILE_PATH = "quiz_data.xlsx"
 GITHUB_TOKEN = st.secrets["api"]["key"]  # Replace with your new secure GitHub token
 
 
 def save_to_github_excel(df):
     """Save the quiz data as an Excel file and upload it to GitHub with proper formatting."""
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/main/{GITHUB_FILE_PATH}"
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_FILE_PATH}"
     headers = {"Authorization": f"token {GITHUB_TOKEN}", "Accept": "application/vnd.github.v3+json"}
 
     # Convert DataFrame to Excel with text wrapping
